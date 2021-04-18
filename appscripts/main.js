@@ -1437,7 +1437,7 @@ let startGame04 = function(){
 
 		while (orbsCounter<numOrbs){
 			//target1Y[orbsCounter] = map(Math.random(),0,1,0.2,1)*column1Coord.y/1.5;
-			orbsArray[orbsCounter] = paper.circle(map(Math.random(),0,1,playerAvatarRadius,pWidth-playerAvatarRadius),map(Math.random(),0,1,pHeight/3,pHeight-playerAvatarRadius),map(Math.random(),0,1,20,25)).attr({
+			orbsArray[orbsCounter] = paper.circle(map(Math.random(),0,1,playerAvatarRadius,pWidth-playerAvatarRadius),map(Math.random(),0,1,pHeight/3,pHeight-playerAvatarRadius),map(Math.random(),0,1,15,20)).attr({
 			    		"fill": "r(.3,.25) #ffe9e8-" + "black",
 					    "stroke-width":0,
 					    "opacity":0
