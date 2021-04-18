@@ -298,8 +298,7 @@ let draw = function(){
 	        });
 	        bulletCollector.show();
 	        scopeTotalTime = Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000;
-			var scopeTimeLapsed = paper.text(pWidth/10, pHeight/10, `  `).attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 1});
-			scopeTimeLapsed.attr({text: `You took ${Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000} seconds.`});
+			var scopeTimeLapsed = paper.text(pWidth/10, pHeight/10, `You took ${Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000} seconds.`).attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 1});
 			scopeTimeLapsed.animate({"x": pWidth/5, "opacity": 0}, 5000, function(ev){this.remove()});
 	    };
 
