@@ -1,0 +1,169 @@
+html, body {
+  color: #000000;
+  width: 98.5vw;
+  height: 100vh; /* 100% of the viewport height */
+  margin: 0;
+  text-align: center;
+  font-family: 'Arial', serif;
+}
+
+
+h2 {
+  color: #c42b2b;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+
+
+p {
+  line-height: 2;
+}
+
+hr {
+  border: dotted #c42b2b 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+
+a{
+  color: #ADD8E6;
+  font-family: 'Arial', sans-serif;
+  margin: 10px 20px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+#top-container {
+  color: #000000;
+  background-color: blue; /* or #c42b2b */
+  padding: 0px 0 0px;
+  -webkit-tap-highlight-color:transparent;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  border: 1px;
+  border-color: white;
+}
+
+#main-container {
+  width: 98.5vw;
+  height: 80vh; /* x% of the viewport height */
+  margin: 0;
+  align-self: center;
+  align-content: center;
+  font-family: Arial, Arial, sans-serif;
+  background-color: #333333;
+  border: 10px;
+  border-color: white;
+}
+
+#bottom-container {
+  color: #FFFFFF;
+  background-color: #000000; /* or #c42b2b */
+  padding: 10px 10px 10px 10px;
+  -webkit-tap-highlight-color:transparent;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  text-align: left;
+  border: 1px;
+  border-color: white;
+}
+
+#copyright{
+    float:right;
+}
+
+#text-left{
+    float:left;
+}
+
+.text-center{
+    text-align: center;
+}
+
+text {
+       -moz-user-select: none;
+       -webkit-user-select: none;
+      font-family: 'Arial', sans-serif;
+}
+
+/* Sections of Layout
+-------------------------------------- */
+/* Generic styles for demo purposes
+-------------------------------------- */
+
+#main-container > * {
+  background-color: #000000;
+  padding: 0.5em 0 0.5em 0;
+  border: 1px;
+  border-color: white;
+}
+
+
+/* Layout is stacked vertically by default (for narrower viewports), so give some breathing room between the sections. */
+/* Select all elements where parent is a main-container */
+#main-container > * {
+  margin-bottom: 2%;
+}
+
+/* Now let's apply grid for wider viewports. */
+@media screen and (min-width: 40em) {
+  #main-container > * {
+    margin-bottom: 0;
+  }
+  /* Define the grid */
+  .main-container {
+    display: grid;
+    grid-template-columns: 18% 60% 18%;
+    grid-gap: 2% 2%;
+    grid-template-rows: 10% auto 10%;
+  }
+  /* Place items on the grid */
+  .header {
+    grid-column: 1 / span 3;
+
+  }
+  .sidebar {
+    grid-row-end: span 2;
+  }
+  .content {
+    grid-column: 2;
+  }
+
+}
+
+span.underline { 
+  text-decoration: underline; 
+}
+
+.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
