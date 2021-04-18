@@ -1775,7 +1775,7 @@ The image files used are created by yours truly.
 	"fill": "#000000",
 	"opacity": 0
 	});
-	var chapterHeader = paper.text(pWidth/2, pHeight/2, "Epilogue: Lemons, Water, Iced Lemon Tea, and Industrial Application.").attr({"font-size": 25, "fill": "#000000", "opacity": 0}).animate({"y": pHeight/10, "opacity": 1},7000);
+	var chapterHeader = paper.text(pWidth/2, pHeight/2, "Epilogue: Lemons, Water, Lemon Tea, and Industrial Application.").attr({"font-size": 25, "fill": "#000000", "opacity": 0}).animate({"y": pHeight/10, "opacity": 1},7000);
 	var evaluateTime = Math.floor((snekTotalTime+bubbleTotalTime+scopeTotalTime));
 	if ((snekTotalTime+bubbleTotalTime) < 100){
 		    finalText.attr({"text": `You have witnessed the birth of a patent's core.\n \nThe one thing to take away today would be the set of 3 requirements for patentability: \n(1) Novelty, \n(2) inventive step, and \n(3) industrial application.\n \n
