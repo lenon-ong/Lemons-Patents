@@ -176,7 +176,7 @@ mouseMain6.animate({opacity: 0.5}, 1000);
 var mouseMain6_transformedPath = Raphael.transformPath(mousePathString6, `T${pWidth/4},${pHeight/100}`);
 mouseMain6.animate({path: mouseMain6_transformedPath}, 1000);
 
-var mouseText1 = paper.text(pWidth/4, pHeight/4*1.3, "For the best experience, use a mouse, a laptop/desktop, headphones, \nand close all other tabs or programs.\n \nPlease also check the volume level of your system.\n(Recommended Level: 20%)\n↓\nYou can make various things happen here\nwith a mouse...\n \nAfter reading what the talking lemon has to say below, \nclick the left mouse button.").attr({"font-size": 15, "fill": "#000", "font-family": "Arial", "opacity": 0});
+var mouseText1 = paper.text(pWidth/4, pHeight/4*1.3, "For the best experience, use headphones.\n \nPlease also check the volume level of your system.\n(Recommended Level: 20%)\n \nYou can make various things happen here\n only with a mouse...\n \nDo read what the talking lemon has to say\nbelow before you begin!\n \n↓").attr({"font-size": 15, "fill": "#000", "font-family": "Arial", "opacity": 0});
 mouseText1.animate({opacity: 1}, 1000);
 
 var titleText = paper.text(pWidth/2, pHeight/4*3.5, "Prologue: Today, A Lemon Talked to Me About Patents.").attr({"font-size": 30, "fill": "#000", "font-family": "Arial", "opacity": 0});
