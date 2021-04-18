@@ -298,8 +298,6 @@ let draw = function(){
 	        });
 	        bulletCollector.show();
 	        scopeTotalTime = Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000;
-			var scopeTimeLapsed = paper.text(pWidth/10, pHeight/10, `You took ${Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000} seconds.`).attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 1});
-			scopeTimeLapsed.animate({"x": pWidth/5, "opacity": 0}, 5000, function(ev){this.remove()});
 	    };
 
 	    counter++; // to break out of the while loop
@@ -547,6 +545,8 @@ bulletCollector.node.addEventListener("click", function(ev){
 		commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: I heard patents are granted as fast as 6 months in Singapore. Typically, patents are granted 2-4 years after the date of the filing of patent application (also known as the priority date). Once granted, a patent is granted for TWENTY years from the priority date as the inventor has revealed the invention to the public.<br>
 			    		<hr>This webpage is powered by HTML5, CSS, and purely by the Javascript library, Raphaël.<br><br>All audio and SVG line paths are extracted from works that are in the public domain (sources: freesound.org and freesvg.org). The image files used are created by yours truly.<br><br> © 2021, <a href='https://www.linkedin.com/in/lenon-ong/' target= '_blank'><span class='underline'>Lenon Ong</span></a><br><a href='https://creativecommons.org/licenses/by/3.0/' target= '_blank'><span class='underline'>Available under the Creative Commons Attribution 3.0 Unported License.</span></a><hr>`;
 		var chapterHeader = paper.text(pWidth/2, pHeight/2, "Act II: Friends of Novelty - The Patent Application & The Priority Date.").attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 0}).animate({"y":pHeight/10, "opacity": 1},5000, function(ev){this.animate({"opacity":0},2000, function(ev){this.remove()})});
+		var scopeTimeLapsed = paper.text(pWidth/10, pHeight/10, `You took ${Math.round((Date.now()-scopeStartTime)).toFixed(2)/1000} seconds.`).attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 1});
+		scopeTimeLapsed.animate({"x": pWidth/5, "opacity": 0}, 5000, function(ev){this.remove()});
 		hitAudio[3].pause();
         hitAudio[3].currentTime = 0;
         hitAudio[3].play();
