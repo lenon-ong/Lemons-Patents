@@ -51,7 +51,7 @@ let commentaryAnimation = function (){
 
 var chapterHeader = paper.text(pWidth/2, pHeight/10, "Prologue: Today, A Lemon Talked to Me About Patents.").attr({"font-size": 20, "fill": "#000000", "opacity": 0});
 
-commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: Hello! You're now listening to <i>The Talking Lemon</i>. Today is ${new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, and I'll be talking about patents (and random stuff). Read my grandiose speech down here (look out for a yellow arrow: ⇩) to find out what the lemon is going on!
+commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: Hello! You're now listening to <i>The Talking Lemon</i>. Today is ${new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, and I'll be talking about patents (and random stuff). Read my grandiose speech here to find out what the lemon is going on above!
 <br><br>
 
        Here, you will experience an interactive narrative (with some mini-games). Various principles and information relating to patents and patent law will be illustrated.<br><br>Leaving me alone here while you go to another tab or window will make me become wonky.<br><br>Hope you will stay till the end, take away something from here, and enjoy!
