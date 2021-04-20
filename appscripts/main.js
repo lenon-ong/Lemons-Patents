@@ -1,6 +1,5 @@
 // main.js
 
-console.log("Yo, I am alive!");
 
 
 // Grab the div where we will put our Raphael paper
@@ -463,7 +462,6 @@ let endGame01 = function(){
 };
 
 // Call draw() periodically
-// We start the animation last thing as the module loads
 let timer = setInterval(draw, 20);
 //let timer02 = setInterval(endGame01, 20);
 //clearInterval(timer02);
