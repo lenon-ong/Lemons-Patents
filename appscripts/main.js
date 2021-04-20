@@ -623,198 +623,198 @@ bulletCollector.node.addEventListener("click", function(ev){
 		bulletCollectorActivate = 0;
 		console.log("round 2");
 
-				////*****************
+////*****************
 
-				//SNAKE MONSTER SPAWN
+//SNAKE MONSTER SPAWN
 
-				////*****************
+////*****************
 
-				// creating all the "counter" variables here
-				count = 0;
-				contactPointX = 0;
-				contactPointY = 0;
+// creating all the "counter" variables here
+count = 0;
+contactPointX = 0;
+contactPointY = 0;
 
-				let frameLength=10; // in ms, used for the interval at which we call the draw() function
-				let time = 0;      // time since the page was loaded into the browser; incremented in draw()
-				let hitWindow = 15; // radius of nd
+let frameLength=25; // in ms, used for the interval at which we call the draw() function
+let time = 0;      // time since the page was loaded into the browser; incremented in draw()
+let hitWindow = 15; // radius of nd
 
-				// Find and get paper dimensions
-				let dimX = paper.width;
-				let dimY = paper.height;
-
-
-				let disk = paper.circle(dimX/2, dimY/2, 50).attr({"fill": "black", "stroke":"white"});
-				//disk.hide();
-				disk.animate({opacity:0}, 1000);
-				let diskglow = disk.glow({ 'width': 60, 'fill': true, 'opacity': 0.5, 'color': 'white'});
-				//diskglow.hide();
-				diskglow.animate({opacity:0}, 1000, function(){this.remove();});
-
-				// preparing for clash ripple effect
-
-				let clashInitialRipple = paper.circle(disk.Xpos,disk.Ypos,40).attr({
-				    "stroke-width":2,
-				    "stroke": "yellow"
-				});
-
-				clashInitialRipple.hide();
+// Find and get paper dimensions
+let dimX = paper.width;
+let dimY = paper.height;
 
 
-				let clashRippleAnimation = function(){
-					clashInitialRipple.show();
-					clashInitialRipple.animate({
-						"r": 400,
-						"opacity": 0
-					}, 2000);
-				};
+let disk = paper.circle(dimX/2, dimY/2, 50).attr({"fill": "black", "stroke":"white"});
+//disk.hide();
+disk.animate({opacity:0}, 1000);
+let diskglow = disk.glow({ 'width': 60, 'fill': true, 'opacity': 0.5, 'color': 'white'});
+//diskglow.hide();
+diskglow.animate({opacity:0}, 1000, function(){this.remove();});
 
-				disk.Xpos = disk.attr("cx");
-				disk.Ypos = disk.attr("cy");
+// preparing for clash ripple effect
 
-				disk.Xrate = 5;
-				disk.Yrate = 1;
+let clashInitialRipple = paper.circle(disk.Xpos,disk.Ypos,40).attr({
+    "stroke-width":2,
+    "stroke": "yellow"
+});
 
-				let slide = function(){
-					//snekTimeLapsed.attr({text: `${(Math.round((Date.now()-snekSpawnTime))/1000).toFixed(2)}`});
-					var nd = paper.circle(dimX/2,3*dimY/4,hitWindow).attr({"fill":"url('resources/just_lemon5.png')", "stroke":"white"});
-					var nEye = paper.ellipse(dimX/2,3*dimY/4,hitWindow/3, hitWindow/2).attr({"fill":"black", "stroke":"black"});
-
-				/* Update disk.xpos and disk.ypos by adding disk.xrate and disk.yrate to them each time in
-				'draw'. That is, the disk.xrate and disk.yrate numbers represent the number of pixels in
-				each dimension that we will move the disk each time draw() is called. */
-					disk.Xpos += disk.Xrate;
-					disk.Ypos += disk.Yrate;
-					//console.log(disk.Xpos);
-					//console.log(disk.Ypos);
-
-					nd.attr({"cx": disk.Xpos, "cy": disk.Ypos});
-					nEye.attr({"cx": disk.Xpos, "cy": disk.Ypos});
-
-				// the 4 "if" conditions to rebound the trail when the trail hits the 4 walls
-
-					if (disk.Xpos >= dimX-disk.attr("r")){
-						disk.Xrate = -5;
-						disk.Yrate *= -1; //makes the yellow snake's movement more randomised //math.random not used cos it causes lag										
-						contactPointX = disk.Xpos+hitWindow;
-						contactPointY = disk.Ypos+hitWindow;
-						cursorInitialRipple.attr({
-					        "cx": contactPointX,
-					        "cy": contactPointY
-					    });
-					    cursorInitialRipple.show();
-						cursorRippleAnimation();
-					};
-					/*console.log(dimY-20)
-					console.log(disk.attr("cy"))*/ 
-					//this shows that we cannot use === cos the numbers will not be exactly the same and then the if statement will not work
-					if (disk.Ypos >= 3*dimY/4-disk.attr("r")){
-						disk.Yrate = -5;
-						contactPointX = disk.Xpos+hitWindow;
-						contactPointY = disk.Ypos+hitWindow;
-						cursorInitialRipple.attr({
-					        "cx": contactPointX,
-					        "cy": contactPointY
-					    });
-					    cursorInitialRipple.show();
-						cursorRippleAnimation();											
-					};
-
-					if (disk.Xpos <= 0+disk.attr("r")){
-						disk.Xrate = 5;
-						disk.Yrate *= -1; //makes the yellow snake's movement more randomised //math.random not used cos it causes lag										
-						contactPointX = disk.Xpos+hitWindow;
-						contactPointY = disk.Ypos+hitWindow;
-						cursorInitialRipple.attr({
-					        "cx": contactPointX,
-					        "cy": contactPointY
-					    });
-					    cursorInitialRipple.show();
-						cursorRippleAnimation();												
-					};
-
-					if (disk.Ypos <= 0+disk.attr("r")){
-						disk.Yrate = 5;
-						contactPointX = disk.Xpos+hitWindow;
-						contactPointY = disk.Ypos+hitWindow;
-						cursorInitialRipple.attr({
-					        "cx": contactPointX,
-					        "cy": contactPointY
-					    });
-					    cursorInitialRipple.show();
-						cursorRippleAnimation();												
-					};
-
-				// 12. Using Raphael's animate function to remove the circle from the paper after 1 second, and making the circle transparent over 1 second.
-					nd.animate({r:hitWindow/10, opacity:0}, 750, function(ev){this.remove();});
-					nEye.animate({r:hitWindow/10, opacity:0, "stroke":"green", "fill":"green"}, 50, function(ev){this.remove();});					
-
-				// 13. Bullet x Headshot code
-					bullet.posx += bullet.xrate;
-			        bullet.posy += bullet.yrate;
-			        bullet.attr({ cx : bullet.posx, cy : bullet.posy});
-
-			        bulletBump(nd, bullet)
-			        if (bulletBump(nd, bullet)){
-			            clashInitialRipple.attr({
-			            	"cx": disk.Xpos,
-			            	"cy": disk.Ypos
-			            });
-			            clashRippleAnimation();
-			            clearInterval(timer02);
-			           	var chapterHeader = paper.text(pWidth/2, pHeight/2, "Act IV: The Territoriality Principle & Computers.").attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 0}).animate({"y": pHeight/10, "opacity": 1},5000, function(ev){this.animate({"opacity":0},2000, function(ev){this.remove()})});
-			            var arrowDownText = paper.text(pWidth/10, pHeight/4*3.5, "⇩").attr({"font-size": 90, "fill": "#FDFF00", "font-family": "Arial", "opacity": 0});
-						arrowDownText.animate({opacity:1}, 2000, function(ev){this.animate({"opacity":0},500, function(ev){this.remove()})});
-			            commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: You defeated it! Now we are entering the territory of the <i>territorality</i> principle. Patent protection is granted by jurisdiction. To obtain patent protection <b>outside of the boundaries</b> of, say, my home country (Singapore!), patent applications have to be made overseas.
-			            	    		<hr>Information presented in this webpage is solely for educational and entertainment purposes only.<br><br>This webpage is powered by HTML5, CSS, and purely by the Javascript library, Raphaël. This is my first Web animation project!<br><br>All audio and SVG line paths were extracted from works that are in the public domain (sources: freesound.org and freesvg.org). The image files used are created by yours truly.<br><br> © 2021, <a href='https://www.linkedin.com/in/lenon-ong/' target= '_blank'><span class='underline'>Lenon Ong</span></a><br><a href='https://creativecommons.org/licenses/by/3.0/' target= '_blank'><span class='underline'>Available under the Creative Commons Attribution 3.0 Unported License.</span></a><hr>`;
-			            hitAudio[2].pause();
-				        hitAudio[2].currentTime = 0;
-        				hitAudio[2].play();
-			            endGame02();
-			            diskglow.hide();
-			            disk.hide();
-			        } else {
-			            {disk.attr({"fill":"#000000"})}
-			        };
-
-				};
+clashInitialRipple.hide();
 
 
-				//02.5 function for bullet bumping with head
+let clashRippleAnimation = function(){
+	clashInitialRipple.show();
+	clashInitialRipple.animate({
+		"r": 400,
+		"opacity": 0
+	}, 2000);
+};
 
+disk.Xpos = disk.attr("cx");
+disk.Ypos = disk.attr("cy");
 
-				function bulletBump(c1,c2){
-				    c1 = {
-				        "x" : c1.attr("cx"),
-				        "y" : c1.attr("cy"),
-				    };
-				    c2 = {
-				        "x" : c2.attr("cx"),
-				        "y" : c2.attr("cy"),
-				    };
-				    let d = distance(c1,c2)
+disk.Xrate = 10;
+disk.Yrate = 1;
 
-				    if (d < hitWindow + bullet.attr("r")){
-				        bullet.hide();
-				        snekTotalTime = Math.round((Date.now()-snekSpawnTime)).toFixed(2)/1000;
-						snekTimeLapsed.attr({"opacity": 1});
-						snekTimeLapsed.attr({text: `You took ${Math.round((Date.now()-snekSpawnTime)).toFixed(2)/1000} seconds.`});
-				        snekTimeLapsed.animate({"x": pWidth/5, "opacity": 0}, 5000, function(ev){this.remove()});
-				        bullet.posx = -100;
-				        bullet.posy = -100;
-				        bullet.yrate = 0;
-				        return true
-				    }
-				    else {
-				        bullet.show();
-				        return false
-				    }
-				};
+let slide = function(){
+	//snekTimeLapsed.attr({text: `${(Math.round((Date.now()-snekSpawnTime))/1000).toFixed(2)}`});
+	var nd = paper.circle(dimX/2,3*dimY/4,hitWindow).attr({"fill":"url('resources/just_lemon5.png')", "stroke":"white"});
+	var nEye = paper.ellipse(dimX/2,3*dimY/4,hitWindow/3, hitWindow/2).attr({"fill":"black", "stroke":"black"});
 
+/* Update disk.xpos and disk.ypos by adding disk.xrate and disk.yrate to them each time in
+'draw'. That is, the disk.xrate and disk.yrate numbers represent the number of pixels in
+each dimension that we will move the disk each time draw() is called. */
+	disk.Xpos += disk.Xrate;
+	disk.Ypos += disk.Yrate;
+	//console.log(disk.Xpos);
+	//console.log(disk.Ypos);
 
-		let timer02 = setInterval(slide, frameLength);
+	nd.attr({"cx": disk.Xpos, "cy": disk.Ypos});
+	nEye.attr({"cx": disk.Xpos, "cy": disk.Ypos});
 
+// the 4 "if" conditions to rebound the trail when the trail hits the 4 walls
+
+	if (disk.Xpos >= dimX-disk.attr("r")){
+		disk.Xrate = -10;
+		disk.Yrate *= -1; //makes the yellow snake's movement more randomised //math.random not used cos it causes lag										
+		contactPointX = disk.Xpos+hitWindow;
+		contactPointY = disk.Ypos+hitWindow;
+		/*cursorInitialRipple.attr({
+	        "cx": contactPointX,
+	        "cy": contactPointY
+	    });
+	    cursorInitialRipple.show();
+		cursorRippleAnimation();*/
 	};
-	
+	/*console.log(dimY-20)
+	console.log(disk.attr("cy"))*/ 
+	//this shows that we cannot use === cos the numbers will not be exactly the same and then the if statement will not work
+	if (disk.Ypos >= 3*dimY/4-disk.attr("r")){
+		disk.Yrate = -10;
+		contactPointX = disk.Xpos+hitWindow;
+		contactPointY = disk.Ypos+hitWindow;
+		/*cursorInitialRipple.attr({
+	        "cx": contactPointX,
+	        "cy": contactPointY
+	    });
+	    cursorInitialRipple.show();
+		cursorRippleAnimation();*/										
+	};
+
+	if (disk.Xpos <= 0+disk.attr("r")){
+		disk.Xrate = 10;
+		disk.Yrate *= 1.5; //makes the yellow snake's movement more randomised //math.random not used cos it causes lag										
+		contactPointX = disk.Xpos+hitWindow;
+		contactPointY = disk.Ypos+hitWindow;
+		/*cursorInitialRipple.attr({
+	        "cx": contactPointX,
+	        "cy": contactPointY
+	    });
+	    cursorInitialRipple.show();
+		cursorRippleAnimation();*/										
+	};
+
+	if (disk.Ypos <= 0+disk.attr("r")){
+		disk.Yrate = 5;
+		contactPointX = disk.Xpos+hitWindow;
+		contactPointY = disk.Ypos+hitWindow;
+		/*cursorInitialRipple.attr({
+	        "cx": contactPointX,
+	        "cy": contactPointY
+	    });
+	    cursorInitialRipple.show();
+		cursorRippleAnimation();*/											
+	};
+
+// 12. Using Raphael's animate function to remove the circle from the paper after 1 second, and making the circle transparent over 1 second.
+	nd.animate({r:hitWindow/10, opacity:0}, 750, function(ev){this.remove();});
+	nEye.animate({r:hitWindow/10, opacity:0, "stroke":"green", "fill":"green"}, 50, function(ev){this.remove();});					
+
+// 13. Bullet x Headshot code
+	bullet.posx += bullet.xrate;
+    bullet.posy += bullet.yrate;
+    bullet.attr({ cx : bullet.posx, cy : bullet.posy});
+
+    bulletBump(nd, bullet)
+    if (bulletBump(nd, bullet)){
+        clashInitialRipple.attr({
+        	"cx": disk.Xpos,
+        	"cy": disk.Ypos
+        });
+        clashRippleAnimation();
+        clearInterval(timer02);
+       	var chapterHeader = paper.text(pWidth/2, pHeight/2, "Act IV: The Territoriality Principle & Computers.").attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 0}).animate({"y": pHeight/10, "opacity": 1},5000, function(ev){this.animate({"opacity":0},2000, function(ev){this.remove()})});
+        var arrowDownText = paper.text(pWidth/10, pHeight/4*3.5, "⇩").attr({"font-size": 90, "fill": "#FDFF00", "font-family": "Arial", "opacity": 0});
+		arrowDownText.animate({opacity:1}, 2000, function(ev){this.animate({"opacity":0},500, function(ev){this.remove()})});
+        commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: You defeated it! Now we are entering the territory of the <i>territorality</i> principle. Patent protection is granted by jurisdiction. To obtain patent protection <b>outside of the boundaries</b> of, say, my home country (Singapore!), patent applications have to be made overseas.
+        	    		<hr>Information presented in this webpage is solely for educational and entertainment purposes only.<br><br>This webpage is powered by HTML5, CSS, and purely by the Javascript library, Raphaël. This is my first Web animation project!<br><br>All audio and SVG line paths were extracted from works that are in the public domain (sources: freesound.org and freesvg.org). The image files used are created by yours truly.<br><br> © 2021, <a href='https://www.linkedin.com/in/lenon-ong/' target= '_blank'><span class='underline'>Lenon Ong</span></a><br><a href='https://creativecommons.org/licenses/by/3.0/' target= '_blank'><span class='underline'>Available under the Creative Commons Attribution 3.0 Unported License.</span></a><hr>`;
+        hitAudio[2].pause();
+        hitAudio[2].currentTime = 0;
+		hitAudio[2].play();
+        endGame02();
+        diskglow.hide();
+        disk.hide();
+    } else {
+        {disk.attr({"fill":"#000000"})}
+    };
+
+};
+
+
+//02.5 function for bullet bumping with head
+
+
+function bulletBump(c1,c2){
+    c1 = {
+        "x" : c1.attr("cx"),
+        "y" : c1.attr("cy"),
+    };
+    c2 = {
+        "x" : c2.attr("cx"),
+        "y" : c2.attr("cy"),
+    };
+    let d = distance(c1,c2)
+
+    if (d < hitWindow + bullet.attr("r")){
+        bullet.hide();
+        snekTotalTime = Math.round((Date.now()-snekSpawnTime)).toFixed(2)/1000;
+		snekTimeLapsed.attr({"opacity": 1});
+		snekTimeLapsed.attr({text: `You took ${Math.round((Date.now()-snekSpawnTime)).toFixed(2)/1000} seconds.`});
+        snekTimeLapsed.animate({"x": pWidth/5, "opacity": 0}, 5000, function(ev){this.remove()});
+        bullet.posx = -100;
+        bullet.posy = -100;
+        bullet.yrate = 0;
+        return true
+    }
+    else {
+        bullet.show();
+        return false
+    }
+};
+
+
+let timer02 = setInterval(slide, frameLength);
+
+};
+
 });
 
 bulletCollector.node.addEventListener("mousemove", function(ev){
@@ -1739,7 +1739,7 @@ let startGame04 = function(){
 		};
 
 		// animate
-		let game04Inverval = setInterval(updateMap, 20);
+		let game04Inverval = setInterval(updateMap, 25);
 		let createBubblesInverval = setInterval(createBubbles, 15000);
 
 	});
