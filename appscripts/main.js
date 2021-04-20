@@ -282,7 +282,7 @@ let draw = function(){
 	    };
 	    if (numCleared===0) {
 	    	hitText.hide();
-	    	commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: Well done! I would say we have gone through 99.9% of prior art (disclaimer: this is an exaggeration). We can assume that our imaginary invention is novel! Push that red pulsing circle - we are going to make a patent application upon considering all the prior art!
+	    	commentary.innerHTML = `[${new Date().toLocaleTimeString()}] <b>The Talking Lemon</b>: Well done! I would say we have gone through 99.9% of prior art (disclaimer: this is an exaggeration). We can assume that our imaginary invention is novel! Push that red pulsing circle — we are going to make a patent application upon considering all the prior art!
 	    		<hr>Information presented in this webpage is solely for educational and entertainment purposes only.<br><br>This webpage is powered by HTML5, CSS, and purely by the Javascript library, Raphaël. This is my first Web animation project!<br><br>All audio and SVG line paths were extracted from works that are in the public domain (sources: freesound.org and freesvg.org). The image files used are created by yours truly.<br><br> © 2021, <a href='https://www.linkedin.com/in/lenon-ong/' target= '_blank'><span class='underline'>Lenon Ong</span></a><br><a href='https://creativecommons.org/licenses/by/3.0/' target= '_blank'><span class='underline'>Available under the Creative Commons Attribution 3.0 Unported License.</span></a><hr>`;
 		    if (audioCount1===0){	    	
 		    	hitAudio[3].pause();
