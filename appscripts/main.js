@@ -1505,7 +1505,7 @@ let startGame04 = function(){
 		});
 		overlay2.animate({opacity: 0}, 3000, function(ev){this.remove();});
 		mouseText2.remove();
-		var mouseText3 = paper.text(pWidth/2, pHeight/4*3, `Click anywhere or use the "up" arrow key on a keyboard to give the slice of lemon a little vertical boost!\n \nClear away all the black orbs by touching them with the slice of lemon!`).attr({"font-size": 15, "fill": "#000000", "font-family": "Arial", "opacity": 1});
+		var mouseText3 = paper.text(pWidth/2, pHeight/4*3, `Click anywhere or use the "up" arrow key on a keyboard to give the slice of lemon a little boost!`).attr({"font-size": 15, "fill": "#000000", "font-family": "Arial", "opacity": 1});
 		mouseText3.animate({opacity: 0}, 7000, function(ev){this.remove();});
 		var scoreTextStage4 = paper.text(pWidth/4*3.6, pHeight/10, `Black orbs cleared: ${orbsCleared} / 18`).attr({"font-size": 15, "fill": "#000000", "font-family": "Arial", "opacity": 0});
 		scoreTextStage4.animate({opacity: 1}, 1000);
