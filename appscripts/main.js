@@ -1226,7 +1226,7 @@ let create3DMain = function(){
 			hitGlobeText.animate({opacity:0}, 3000);
 	    };
 	    if (globeNumClicks >= maxGlobeClicks){
-	    	hitGlobeText.attr({"text": `We have talked about prior art, territoriality, the public domain, the typical duration of patent protection,\nand that computer programs are helpful in the international patent search process.\n \nIt is also challenging when determining the patentability of inventions, \nand particularly, the patentability of computer programs.\n \nHowever, we have only talked about "novelty", one of the three criteria for patentability.\n \nLet's go through the portal and check out what the other two are!`});
+	    	hitGlobeText.attr({"text": `We have talked about prior art, territoriality, the public domain, the typical duration of patent protection,\nand that computer programs are helpful in the international patent search process.\n \nIt is also challenging when determining the patentability of inventions, \nand particularly, the patentability of computer programs.\n \nSo far, we have only talked about "novelty", one of the three criteria for patentability.\n \nLet's go through the portal and check out what the other two are!`});
 	    	hitGlobeText.attr({"opacity":0, "x": pWidth/2, "y": pHeight/2, "font-size": 20});
 	    	hitGlobeText.animate({"opacity":1}, 3000);
 	    	var arrowDownText = paper.text(pWidth/10, pHeight/4*3.5, "⇩").attr({"font-size": 90, "fill": "#FDFF00", "font-family": "Arial", "opacity": 0});
