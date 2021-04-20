@@ -1739,7 +1739,7 @@ let startGame04 = function(){
 		};
 
 		// animate
-		let game04Inverval = setInterval(updateMap, 30);
+		let game04Inverval = setInterval(updateMap, 20);
 		let createBubblesInverval = setInterval(createBubbles, 15000);
 
 	});
