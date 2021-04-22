@@ -932,7 +932,7 @@ let endGame02 = function(){
 
 	};
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>initialising countries' svg for game03
-	var promptCountryText = paper.text(MCTextX, MCTextY, "Find something to click on. (It's thin!)").attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 0});
+	var promptCountryText = paper.text(MCTextX, MCTextY, "For this Act, find something to click on to proceed. (Hint: They're thin!)").attr({"font-size": 20, "fill": "#FFFFFF", "opacity": 0});
 	promptCountryText.animate({"opacity":1}, 3000);
 
 	//FIRST UP: SINGAPORE --> credit: https://freesvg.org/simple-map-of-singapore (CC0 1.0 Universal (CC0 1.0) Public Domain Dedication)
